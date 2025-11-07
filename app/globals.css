@@ -1,0 +1,184 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased font-sans;
+    font-feature-settings: "kern" 1, "liga" 1;
+    background-color: #0a1929 !important; /* bg-law-navy-950 */
+  }
+  
+  html {
+    background-color: #0a1929 !important; /* bg-law-navy-950 */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  
+  /* Apply custom scrollbar to the entire page */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #d4a12a rgba(10, 25, 41, 0.3);
+  }
+
+  html::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: rgba(10, 25, 41, 0.3);
+    border-radius: 10px;
+    margin: 4px 0;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #d4a12a 0%, #b8860b 100%);
+    border-radius: 10px;
+    border: 2px solid rgba(10, 25, 41, 0.5);
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e5b13b 0%, #d4a12a 100%);
+    box-shadow: 0 0 8px rgba(212, 161, 42, 0.4);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .law-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.24);
+  }
+  
+  .law-shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
+  }
+  
+  .law-border {
+    border-color: rgba(180, 137, 29, 0.2);
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.1);
+    border-radius: 10px;
+    margin: 4px 0;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #d4a12a 0%, #b8860b 100%);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e5b13b 0%, #d4a12a 100%);
+    box-shadow: 0 0 8px rgba(212, 161, 42, 0.4);
+  }
+
+  /* Firefox scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #d4a12a rgba(15, 23, 42, 0.1);
+  }
+
+  /* Scrollbar mais discreto para colunas do funil */
+  .funnel-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .funnel-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 2px;
+  }
+
+  .funnel-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 2px;
+    border: none;
+  }
+
+  .funnel-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.5);
+  }
+
+  /* Firefox scrollbar para funnel */
+  .funnel-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+  }
+
+  /* Tour highlight effect */
+  @keyframes tourHighlight {
+    0% { 
+      box-shadow: 0 0 0 4px rgba(212, 161, 42, 0.4), 0 0 20px rgba(212, 161, 42, 0.3); 
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: 0 0 0 8px rgba(212, 161, 42, 0.6), 0 0 30px rgba(212, 161, 42, 0.5); 
+      transform: scale(1.02);
+    }
+    100% { 
+      box-shadow: 0 0 0 4px rgba(212, 161, 42, 0.4), 0 0 20px rgba(212, 161, 42, 0.3); 
+      transform: scale(1);
+    }
+  }
+
+  @keyframes tourPulse {
+    0%, 100% { 
+      background-color: rgba(212, 161, 42, 0.1);
+      border-color: rgba(212, 161, 42, 0.5);
+    }
+    50% { 
+      background-color: rgba(212, 161, 42, 0.2);
+      border-color: rgba(212, 161, 42, 0.8);
+    }
+  }
+
+  .tour-highlight {
+    position: relative;
+    z-index: 52 !important;
+    border-radius: 8px;
+    animation: tourHighlight 2s ease-in-out infinite;
+    transition: all 0.3s ease;
+  }
+
+  /* Destaque especial para abas/botões */
+  button.tour-highlight {
+    animation: tourPulse 1.5s ease-in-out infinite;
+  }
+
+  /* Destaque especial para abas durante o tour */
+  .tour-tab-highlight {
+    box-shadow: 0 0 0 4px rgba(212, 161, 42, 0.6) !important;
+    background: rgba(212, 161, 42, 0.2) !important;
+    border: 2px solid rgba(212, 161, 42, 0.8) !important;
+    animation: tourPulse 1.5s ease-in-out infinite !important;
+  }
+
+  .tour-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+    pointer-events: none;
+  }
+}
